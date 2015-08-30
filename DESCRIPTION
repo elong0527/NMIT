@@ -5,9 +5,11 @@ Version: 0.1
 Date: 2015-08-30
 Authors@R: person("yilong", "zhang", email = "elong0527@gmail.com", role = c("aut", "cre"))
 Description:
-License: What license is it under?
+License: AGPL-3
 LazyData: TRUE
-Imports:
-  vegan,
-  phyloseq,
-  gplots
+URL: http://github.com/elong0527/MicroTDC
+BugReports: http://github.com/elong0527/MicroTDC/issues
+Depends:
+    vegan,
+    phyloseq,
+    gplots

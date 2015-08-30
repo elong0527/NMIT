@@ -69,12 +69,12 @@ tscor <- function(ana, method='kendall', splitcat='Mouse', normfun, fill.na = 0)
 #' @param dist.type
 #' @param heatmap whether to draw heatmap
 #' @param classify whether to draw classifier tree
-#' @example
+#' @examples
 #' #Not Run
-#' load("../microdata/laura.Rdata")
-#' ana  <- subset_samples(genus.count , Experiment == "Trans1" & Time >= 2 & Time <=34  )
-#' map <- sample_data(ana)
-#' MicroTDC(ana, id.var = "Mouse", cov.var = "Group", time.var = "Time")
+#' #load("../microdata/laura.Rdata")
+#' #ana  <- subset_samples(genus.count , Experiment == "Trans1" & Time >= 2 & Time <=34  )
+#' #map <- sample_data(ana)
+#' #MicroTDC(ana, id.var = "Mouse", cov.var = "Group", time.var = "Time")
 MicroTDC <- function(ana, id.var, cov.var, time.var, error_rate = 0.1, pct_threshold = 20, method = "spearman", dist.type = "F", heatmap = T, classify = F){
 
   # Screening
@@ -97,7 +97,7 @@ MicroTDC <- function(ana, id.var, cov.var, time.var, error_rate = 0.1, pct_thres
 
   grp <- map.unique[rownames(dist) , cov.var ]
   # grp <- rbinom(15, size = 1, prob = 0.5)
-  test <- adonis(dist ~ grp)
+  test <- vegan::adonis(dist ~ grp)
   pvalue <- paste( round( test$aov.tab[1,c(4,6)],3),collapse = ";")
   # print(pvalue)
   n.taxa <- nrow(otu)
@@ -105,7 +105,7 @@ MicroTDC <- function(ana, id.var, cov.var, time.var, error_rate = 0.1, pct_thres
   if(heatmap){
     diag(dist) <- median(dist)
     colbar = colorRampPalette(c("yellow", "red"), space = "rgb")
-    heatmap.2( sqrt(dist), xlab = "Sample", ylab = "Sample", Rowv = classify, Colv = classify, dendrogram = "row",
+    gplots::heatmap.2( sqrt(dist), xlab = "Sample", ylab = "Sample", Rowv = classify, Colv = classify, dendrogram = "row",
                col = colbar, density.info = "none", trace = "none", distfun = as.dist,
                main = paste0("Cor method:", method, "Dist type:", dist.type,
                              " \nThreshold:", pct_threshold, " #OTU:", n.taxa, " pvalue:", pvalue)
