@@ -12,5 +12,5 @@ From an interactive R session:
 ```r
 library(devtools)
 install_github("elong0527/MicroTDC")
-library(SpiecEasi)
+library(MicroTDC)
 ```
