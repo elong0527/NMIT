@@ -3,6 +3,8 @@ MicroTDC
 
 An R package for Microbial Temporal Dependency Comparison 
 
+We also provide an ipython notebook in folder `python` to illustrate how to perform the test in python. 
+
 ## Installation ##
 
 I assume that all auxillary packages are already installed
