@@ -1,0 +1,14 @@
+Package: MINT
+Type: Package
+Title: Mcrobial Interdependence Non-parametric Test (MINT)
+Version: 0.1
+Date: 2016-04-22
+Author: Yilong Zhang, Huilin Li
+Maintainer: Yilong Zhang <elong0527@gmail.com>
+Description: The package performs a multivariate distance-based test for group comparisons of
+             microbial temporal interdependence. The MINT test provides a comprehensive way to evaluate
+             the association between key phenotypic variables and microbial interdependence.
+License: AGPL-3
+LazyData: TRUE
+Depends: vegan, phyloseq, gplots
+RoxygenNote: 5.0.1
