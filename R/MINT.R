@@ -59,7 +59,7 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
                    dimnames = list(names.otu, names.otu, names.cor) )
 }
 
-#' Mcrobial Interdependence Non-parametric Test (MINT)
+#' Nonparametric Microbial Interdependence Test  (NMIT)
 #'
 #'
 #' @param otu a matrix of OTU table.
@@ -86,10 +86,10 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
 #' id.var   <- mice$id
 #' cov.var  <- mice$group
 #' time.var <- mice$time
-#' MINT(otu, id.var, cov.var, time.var)
+#' NMIT(otu, id.var, cov.var, time.var)
 #'
 #' @export
-MINT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na = 0){
+NMIT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na = 0){
 
   otu_list <- split(otu, id.var)
   d    <- ncol(otu)
@@ -138,7 +138,7 @@ MINT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type 
 }
 
 
-#' Mcrobial Interdependence Non-parametric Test (MINT) using phyloseq data structure
+#' Nonparametric Microbial Interdependence Test  (MINT) using phyloseq data structure
 #'
 #' @export
 #' @param ana an phyloseq object with counts/relative abundance data
@@ -167,7 +167,7 @@ MINT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type 
 #' ana  <- subset_samples(genus.count , Experiment == "Trans1" & Time >= 2 & Time <=34  )
 #' map <- sample_data(ana)
 #' MicroTDC(ana, id.var = "Mouse", cov.var = "Group", time.var = "Time")
-MINT_phyloseq <- function(ana, id.var, cov.var, time.var, error.rate = 0.1, pct.threshold = 20, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na=0){
+NMIT_phyloseq <- function(ana, id.var, cov.var, time.var, error.rate = 0.1, pct.threshold = 20, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na=0){
 
   # Screening
   ana1 <- OTUscreen(ana, error.rate, pct.threshold)
