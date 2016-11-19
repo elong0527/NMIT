@@ -1,14 +1,20 @@
-Package: MINT
+Package: NMIT
 Type: Package
-Title: Mcrobial Interdependence Non-parametric Test (MINT)
+Title: Nonparametric Microbial Interdependence Test (NMIT)
 Version: 0.1
-Date: 2016-04-22
+Date: 2016-11-19
 Author: Yilong Zhang, Huilin Li
 Maintainer: Yilong Zhang <elong0527@gmail.com>
 Description: The package performs a multivariate distance-based test for group comparisons of
-             microbial temporal interdependence. The MINT test provides a comprehensive way to evaluate
+             microbial temporal interdependence. The NMIT test provides a comprehensive way to evaluate
              the association between key phenotypic variables and microbial interdependence.
 License: AGPL-3
 LazyData: TRUE
-Depends: vegan, phyloseq, gplots
+Depends: R (>= 3.1.0)
+Imports: stats,
+         vegan,
+         gplots,
+         grDevices,
+         phyloseq
 RoxygenNote: 5.0.1
+
