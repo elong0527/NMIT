@@ -5,11 +5,11 @@
 \title{Nonparametric Microbial Interdependence Test  (NMIT) using phyloseq data structure}
 \usage{
 NMIT_phyloseq(ana, id.var, cov.var, time.var, error.rate = 0.1,
-  pct.threshold = 20, method = "spearman", dist.type = "F", heatmap = T,
+  pct.threshold = 20, method = "kendall", dist.type = "F", heatmap = T,
   classify = F, fill.na = 0)
 }
 \arguments{
-\item{ana}{an phyloseq object with counts/relative abundance data}
+\item{ana}{a phyloseq object with counts/relative abundance data}
 
 \item{id.var}{a vector of subjects.}
 
@@ -21,9 +21,15 @@ NMIT_phyloseq(ana, id.var, cov.var, time.var, error.rate = 0.1,
 
 \item{pct.threshold}{occurance percentage threshold, the default percentage threshold is 20 percent.}
 
-\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".}
+\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".}
 
-\item{dist.type}{the distance measure to be used. This must be one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski". Any unambiguous substring can be given.}
+\item{dist.type}{character string, specifying the type of matrix norm to be computed. A character indicating the type of norm desired. The default is \code{"F"}. 
+\itemize{
+    \item{\code{"M"} or \code{"m"}}{specifies the maximum modulus of all the elements in \code{x}.}
+    \item{\code{"O"}, \code{"o"} or \code{"1"}}{specifies the one norm, (maximum absolute column sum);}
+    \item{\code{"I"} or \code{"i"}}{specifies the infinity norm (maximum absolute row sum);}
+    \item{\code{"F"} or \code{"f"}}{specifies the Frobenius norm (the Euclidean norm of \code{x} treated as if it were a vector); and}
+}}
 
 \item{heatmap}{a logical value indicating whether to draw heatmap. The default value is TRUE.}
 
@@ -34,7 +40,7 @@ NMIT_phyloseq(ana, id.var, cov.var, time.var, error.rate = 0.1,
 \value{
 This function returns typical, but limited, output for analysis of variance (general linear models).
 \item{aov.tab}{Typical AOV table showing sources of variation, degrees of freedom, sequential sums of squares, mean squares, F statistics, partial R-squared and P values, based on N permutations.}
-\item{coefficients}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing species; each column represents a fit of a species abundance to the linear model. These are what you get when you fit one species to your predictors. These are NOT available if you supply the distance matrix in the formula, rather than the site x species matrix}
+\item{coefficients}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing species; each column represents a fit of a specie abundance to the linear model. These are what you get when you fit one species to your predictors. These are NOT available if you supply the distance matrix in the formula, rather than the site x species matrix}
 \item{coef.sites}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing sites; each column represents a fit of a sites distances (from all other sites) to the linear model. These are what you get when you fit distances of one site to your predictors.}
 \item{f.perms}{an N by m matrix of the null F statistics for each source of variation based on N permutations of the data. The permutations can be inspected with permustats and its support functions.}
 \item{model.matrix}{The model.matrix for the right hand side of the formula.}

@@ -7,14 +7,14 @@
 OTUscreen(ana, error_rate = 0.1, pct_threshold = 20)
 }
 \arguments{
-\item{ana}{an phyloseq object with counts/relative abundance OTU table}
+\item{ana}{a phyloseq object with counts/relative abundance OTU table}
 
 \item{error_rate}{error rate percentage, the default is 0.1 percent}
 
 \item{pct_threshold}{occurance percentage threshold, the default percentage threshold is 20 percent}
 }
 \value{
-an phyloseq object with major taxa
+a phyloseq object with major taxa
 }
 \description{
 Keep major taxa with a predefined error rate and percentage threshold

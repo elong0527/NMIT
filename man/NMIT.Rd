@@ -4,7 +4,7 @@
 \alias{NMIT}
 \title{Nonparametric Microbial Interdependence Test  (NMIT)}
 \usage{
-NMIT(otu, id.var, cov.var, time.var, method = "spearman", dist.type = "F",
+NMIT(otu, id.var, cov.var, time.var, method = "kendall", dist.type = "F",
   heatmap = T, classify = F, fill.na = 0)
 }
 \arguments{
@@ -16,9 +16,15 @@ NMIT(otu, id.var, cov.var, time.var, method = "spearman", dist.type = "F",
 
 \item{time.var}{a vector of time variable.}
 
-\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".}
+\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".}
 
-\item{dist.type}{the distance measure to be used. This must be one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski". Any unambiguous substring can be given.}
+\item{dist.type}{character string, specifying the type of matrix norm to be computed. A character indicating the type of norm desired. The default is \code{"F"}. 
+\itemize{
+    \item{\code{"M"} or \code{"m"}}{specifies the maximum modulus of all the elements in \code{x}.}
+    \item{\code{"O"}, \code{"o"} or \code{"1"}}{specifies the one norm, (maximum absolute column sum);}
+    \item{\code{"I"} or \code{"i"}}{specifies the infinity norm (maximum absolute row sum);}
+    \item{\code{"F"} or \code{"f"}}{specifies the Frobenius norm (the Euclidean norm of \code{x} treated as if it were a vector); and}
+}}
 
 \item{heatmap}{a logical value indicating whether to draw heatmap. The default value is TRUE.}
 

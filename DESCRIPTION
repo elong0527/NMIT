@@ -2,7 +2,7 @@ Package: NMIT
 Type: Package
 Title: Nonparametric Microbial Interdependence Test (NMIT)
 Version: 0.1
-Date: 2016-11-19
+Date: 2016-12-08
 Author: Yilong Zhang, Huilin Li
 Maintainer: Yilong Zhang <elong0527@gmail.com>
 Description: The package performs a multivariate distance-based test for group comparisons of

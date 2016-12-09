@@ -2,14 +2,14 @@
 % Please edit documentation in R/NMIT.R
 \name{tscor}
 \alias{tscor}
-\title{OTU temporal interdependence for each subjects}
+\title{OTU correlation matrix for each subject}
 \usage{
 tscor(ana, method = "kendall", subject_var, fill.na = 0)
 }
 \arguments{
 \item{ana}{a phyloseq object of counts/relative abundance data.}
 
-\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".}
+\item{method}{an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".}
 
 \item{subject_var}{a numeric vector of subject.}
 
@@ -19,6 +19,6 @@ tscor(ana, method = "kendall", subject_var, fill.na = 0)
 a list of temporal correlation matrix for each subject.
 }
 \description{
-OTU temporal interdependence for each subjects
+OTU correlation matrix for each subject
 }
 

@@ -3,11 +3,11 @@
 #'Keep major taxa with a predefined error rate and percentage threshold
 #'
 #'
-#'@param ana an phyloseq object with counts/relative abundance OTU table
+#'@param ana a phyloseq object with counts/relative abundance OTU table
 #'@param error_rate error rate percentage, the default is 0.1 percent
 #'@param pct_threshold occurance percentage threshold, the default percentage threshold is 20 percent
 #'
-#'@return an phyloseq object with major taxa
+#'@return a phyloseq object with major taxa
 #'@export
 OTUscreen <- function(ana, error_rate = 0.1, pct_threshold = 20){
   cat("range of overall counts is", range( sample_sums(ana) ),"\n")
@@ -22,11 +22,11 @@ OTUscreen <- function(ana, error_rate = 0.1, pct_threshold = 20){
   ana1
 }
 
-#' OTU temporal interdependence for each subjects
+#' OTU correlation matrix for each subject
 #'
 #'
 #' @param ana a phyloseq object of counts/relative abundance data.
-#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".
+#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".
 #' @param subject_var a numeric vector of subject.
 #' @param fill.na a number between 0 and 1 to fill the missing value. The default value is 0.
 #'
@@ -66,8 +66,14 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
 #' @param id.var a vector of subjects.
 #' @param cov.var a vector of covariates.
 #' @param time.var a vector of time variable.
-#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".
-#' @param dist.type the distance measure to be used. This must be one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski". Any unambiguous substring can be given.
+#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".
+#' @param dist.type character string, specifying the type of matrix norm to be computed. A character indicating the type of norm desired. The default is \code{"F"}. 
+#' \itemize{
+#'     \item{\code{"M"} or \code{"m"}}{specifies the maximum modulus of all the elements in \code{x}.}
+#'     \item{\code{"O"}, \code{"o"} or \code{"1"}}{specifies the one norm, (maximum absolute column sum);}
+#'     \item{\code{"I"} or \code{"i"}}{specifies the infinity norm (maximum absolute row sum);}
+#'     \item{\code{"F"} or \code{"f"}}{specifies the Frobenius norm (the Euclidean norm of \code{x} treated as if it were a vector); and}
+#' }
 #' @param heatmap a logical value indicating whether to draw heatmap. The default value is TRUE.
 #' @param classify a logical value indicating whether to draw classifier tree. The default value is FALSE.
 #' @param fill.na a number between 0 and 1 to fill the missing value. The default value is 0.
@@ -89,7 +95,7 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
 #' #NMIT(otu, id.var, cov.var, time.var)
 #'
 #' @export
-NMIT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na = 0){
+NMIT <- function(otu, id.var, cov.var, time.var, method = "kendall", dist.type = "F", heatmap = T, classify = F, fill.na = 0){
 
   otu_list <- split(otu, id.var)
   d    <- ncol(otu)
@@ -141,21 +147,27 @@ NMIT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type 
 #' Nonparametric Microbial Interdependence Test  (NMIT) using phyloseq data structure
 #'
 #' @export
-#' @param ana an phyloseq object with counts/relative abundance data
+#' @param ana a phyloseq object with counts/relative abundance data
 #' @param id.var a vector of subjects.
 #' @param cov.var a vector of covariates.
 #' @param time.var a vector of time variable.
 #' @param error.rate error rate percentage, the default is 0.1 percent.
 #' @param pct.threshold occurance percentage threshold, the default percentage threshold is 20 percent.
-#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "spearman".
-#' @param dist.type the distance measure to be used. This must be one of "euclidean", "maximum", "manhattan", "canberra", "binary" or "minkowski". Any unambiguous substring can be given.
+#' @param method an option of the correlation method ("pearson","kendall","spearman"). The default method is "kendall".
+#' @param dist.type character string, specifying the type of matrix norm to be computed. A character indicating the type of norm desired. The default is \code{"F"}. 
+#' \itemize{
+#'     \item{\code{"M"} or \code{"m"}}{specifies the maximum modulus of all the elements in \code{x}.}
+#'     \item{\code{"O"}, \code{"o"} or \code{"1"}}{specifies the one norm, (maximum absolute column sum);}
+#'     \item{\code{"I"} or \code{"i"}}{specifies the infinity norm (maximum absolute row sum);}
+#'     \item{\code{"F"} or \code{"f"}}{specifies the Frobenius norm (the Euclidean norm of \code{x} treated as if it were a vector); and}
+#' }  
 #' @param heatmap a logical value indicating whether to draw heatmap. The default value is TRUE.
 #' @param classify a logical value indicating whether to draw classifier tree. The default value is FALSE.
 #' @param fill.na a number between 0 and 1 to fill the missing value. The default value is 0.
 #'
 #' @return This function returns typical, but limited, output for analysis of variance (general linear models).
 #' \item{aov.tab}{Typical AOV table showing sources of variation, degrees of freedom, sequential sums of squares, mean squares, F statistics, partial R-squared and P values, based on N permutations.}
-#' \item{coefficients}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing species; each column represents a fit of a species abundance to the linear model. These are what you get when you fit one species to your predictors. These are NOT available if you supply the distance matrix in the formula, rather than the site x species matrix}
+#' \item{coefficients}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing species; each column represents a fit of a specie abundance to the linear model. These are what you get when you fit one species to your predictors. These are NOT available if you supply the distance matrix in the formula, rather than the site x species matrix}
 #' \item{coef.sites}{matrix of coefficients of the linear model, with rows representing sources of variation and columns representing sites; each column represents a fit of a sites distances (from all other sites) to the linear model. These are what you get when you fit distances of one site to your predictors.}
 #' \item{f.perms}{an N by m matrix of the null F statistics for each source of variation based on N permutations of the data. The permutations can be inspected with permustats and its support functions.}
 #' \item{model.matrix}{The model.matrix for the right hand side of the formula.}
@@ -167,7 +179,7 @@ NMIT <- function(otu, id.var, cov.var, time.var, method = "spearman", dist.type 
 #' #ana  <- subset_samples(genus.count , Experiment == "Trans1" & Time >= 2 & Time <=34  )
 #' #map <- sample_data(ana)
 #' #NMIT_phyloseq(ana, id.var = "Mouse", cov.var = "Group", time.var = "Time")
-NMIT_phyloseq <- function(ana, id.var, cov.var, time.var, error.rate = 0.1, pct.threshold = 20, method = "spearman", dist.type = "F", heatmap = T, classify = F, fill.na=0){
+NMIT_phyloseq <- function(ana, id.var, cov.var, time.var, error.rate = 0.1, pct.threshold = 20, method = "kendall", dist.type = "F", heatmap = T, classify = F, fill.na=0){
 
   # Screening
   ana1 <- OTUscreen(ana, error.rate, pct.threshold)
