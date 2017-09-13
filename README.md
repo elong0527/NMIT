@@ -1,6 +1,8 @@
 Nonparametric Microbial Interdependence Test (NMIT)
 =========
 
+The paper to descrbied the method is avaliable
+
 [Zhang, Yilong, Sung Won Han, Laura M. Cox, and Huilin Li. "A multivariate distance‐based analytic framework for microbial interdependence association test in longitudinal study." Genetic Epidemiology (2017).](http://onlinelibrary.wiley.com/doi/10.1002/gepi.22065/abstract)
 
 # R package
