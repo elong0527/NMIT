@@ -1,9 +1,11 @@
 Nonparametric Microbial Interdependence Test (NMIT)
 =========
 
-An R package for Nonparametric Microbial Interdependence Test  (NMIT)
+[Zhang, Yilong, Sung Won Han, Laura M. Cox, and Huilin Li. "A multivariate distance‐based analytic framework for microbial interdependence association test in longitudinal study." Genetic Epidemiology (2017).](http://onlinelibrary.wiley.com/doi/10.1002/gepi.22065/abstract)
 
-We also provide an ipython notebook in folder `python` to illustrate how to perform the test in python. 
+# R package
+
+An R package for Nonparametric Microbial Interdependence Test  (NMIT)
 
 ## Installation ##
 
@@ -16,3 +18,9 @@ library(devtools)
 install_github("elong0527/NMIT")
 library(NMIT)
 ```
+
+# Python 
+
+We also provide an ipython notebook in folder `python` to illustrate how to perform the test in python.
+
+
