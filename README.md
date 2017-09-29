@@ -23,6 +23,6 @@ library(NMIT)
 
 # Python 
 
-We also provide an ipython notebook in folder `python` to illustrate how to perform the test in python.
+`NMIT` is avaliable in [https://qiime2.org/](QIIME2) at [nmit](https://docs.qiime2.org/2017.9/plugins/available/longitudinal/nmit/). A tutorial is also avaliabe [(link)](https://github.com/qiime2/docs/blob/master/source/tutorials/longitudinal.rst).
 
 
