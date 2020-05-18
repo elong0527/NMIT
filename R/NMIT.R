@@ -97,7 +97,7 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
 #' @export
 NMIT <- function(otu, id.var, cov.var, time.var, method = "kendall", dist.type = "F", heatmap = T, classify = F, fill.na = 0){
 
-  otu_list <- split(otu, id.var)
+  otu_list <- split(as.data.frame(otu), id.var)
   d    <- ncol(otu)
 
   # pairwise correlations for each OTU sub-table

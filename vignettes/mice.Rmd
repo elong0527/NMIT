@@ -1,0 +1,33 @@
+---
+title: "mice"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mice}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(NMIT)
+library(dplyr)
+```
+
+```{r}
+data(mice)
+```
+
+```{r}
+otu <- mice %>% select(starts_with("OTU")) %>% as.data.frame()
+id.var <- mice$id
+cov.var <- mice$group
+time.var <- mice$time
+
+NMIT(otu, id.var, cov.var, time.var, method = "kendall", dist.type = "F")
+```

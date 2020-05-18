@@ -17,4 +17,7 @@ Imports: stats,
          grDevices,
          phyloseq
 RoxygenNote: 5.0.1
-
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
