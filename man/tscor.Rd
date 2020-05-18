@@ -21,4 +21,3 @@ a list of temporal correlation matrix for each subject.
 \description{
 OTU correlation matrix for each subject
 }
-

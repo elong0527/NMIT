@@ -62,7 +62,7 @@ tscor <- function(ana, method='kendall', subject_var, fill.na = 0) {
 #' Nonparametric Microbial Interdependence Test  (NMIT)
 #'
 #'
-#' @param otu a matrix of OTU table.
+#' @param otu a matrix or data frame of OTU table.
 #' @param id.var a vector of subjects.
 #' @param cov.var a vector of covariates.
 #' @param time.var a vector of time variable.

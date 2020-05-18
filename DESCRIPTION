@@ -16,7 +16,7 @@ Imports: stats,
          gplots,
          grDevices,
          phyloseq
-RoxygenNote: 5.0.1
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown

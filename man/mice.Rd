@@ -4,7 +4,8 @@
 \name{mice}
 \alias{mice}
 \title{A simulated mice data}
-\format{A data frame with 240 rows and 37 variables:
+\format{
+A data frame with 240 rows and 37 variables:
 \describe{
   \item{id}{mouse ID}
   \item{time}{observation time}
@@ -43,7 +44,8 @@
   \item{OTU.32}{relative abundance of an OTU}
   \item{OTU.33}{relative abundance of an OTU}
   \item{OTU.34}{relative abundance of an OTU}
-}}
+}
+}
 \usage{
 mice
 }
@@ -51,4 +53,3 @@ mice
 A dataset containing longitudinal mice OTU table.
 }
 \keyword{datasets}
-

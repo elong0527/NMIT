@@ -19,4 +19,3 @@ a phyloseq object with major taxa
 \description{
 Keep major taxa with a predefined error rate and percentage threshold
 }
-

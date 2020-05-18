@@ -4,9 +4,19 @@
 \alias{NMIT_phyloseq}
 \title{Nonparametric Microbial Interdependence Test  (NMIT) using phyloseq data structure}
 \usage{
-NMIT_phyloseq(ana, id.var, cov.var, time.var, error.rate = 0.1,
-  pct.threshold = 20, method = "kendall", dist.type = "F", heatmap = T,
-  classify = F, fill.na = 0)
+NMIT_phyloseq(
+  ana,
+  id.var,
+  cov.var,
+  time.var,
+  error.rate = 0.1,
+  pct.threshold = 20,
+  method = "kendall",
+  dist.type = "F",
+  heatmap = T,
+  classify = F,
+  fill.na = 0
+)
 }
 \arguments{
 \item{ana}{a phyloseq object with counts/relative abundance data}
@@ -56,4 +66,3 @@ Nonparametric Microbial Interdependence Test  (NMIT) using phyloseq data structu
 #map <- sample_data(ana)
 #NMIT_phyloseq(ana, id.var = "Mouse", cov.var = "Group", time.var = "Time")
 }
-

@@ -4,11 +4,20 @@
 \alias{NMIT}
 \title{Nonparametric Microbial Interdependence Test  (NMIT)}
 \usage{
-NMIT(otu, id.var, cov.var, time.var, method = "kendall", dist.type = "F",
-  heatmap = T, classify = F, fill.na = 0)
+NMIT(
+  otu,
+  id.var,
+  cov.var,
+  time.var,
+  method = "kendall",
+  dist.type = "F",
+  heatmap = T,
+  classify = F,
+  fill.na = 0
+)
 }
 \arguments{
-\item{otu}{a matrix of OTU table.}
+\item{otu}{a matrix or data frame of OTU table.}
 
 \item{id.var}{a vector of subjects.}
 
@@ -53,4 +62,3 @@ Nonparametric Microbial Interdependence Test  (NMIT)
 #NMIT(otu, id.var, cov.var, time.var)
 
 }
-
